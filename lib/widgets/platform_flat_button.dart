@@ -31,7 +31,7 @@ class PlatformFlatButton extends StatelessWidget{
     child: this.child,
   );
 
-  /// Crrate a button instance of [CupertinoDialogAction] 
+  /// Create a button instance of [CupertinoDialogAction] 
   /// based on the current [PlatformFlatButton] instance.
   _cupertinoDialogAction() => CupertinoDialogAction(
     onPressed: this.onPressed,
