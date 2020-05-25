@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -22,8 +24,28 @@ class PlatformAlertDialog extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
-    throw UnimplementedError();
+    return (Platform.isIOS) ? _cupertinoDialog(): _materialDialog();
   }
 
+  /// returns a [AlertDialog] instance
+  /// based on the parameters of the current [PlatformAlertDialog] instance.
+  /// This method is used with Android platform.
+  _materialDialog() => AlertDialog(
+    title: title,
+    content: SingleChildScrollView(
+      child: message
+    ),
+    actions: actions,
+  );
+  
+  /// returns [CupertinoAlertDialog] instance
+  /// based on the parameter of the current [PlatformAlertDialog] instance.
+  /// This mehtos is used with IOS platform.
+  _cupertinoDialog() => CupertinoAlertDialog(
+    title: title,
+    content: SingleChildScrollView(
+      child: message,
+    ),
+    actions: actions
+  );
 }
